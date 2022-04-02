@@ -1,30 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-import data from './Quotes.json';
-
+import { useState } from "react";
+import "./App.css";
+import data from "./Quotes.json";
 
 function App() {
+    const randomPosition = (max) => {
+        return Math.floor(Math.random() * max.length - 1);
+    };
 
-  console.log(data)
+    // ? Initial State
+    const [quote, setQuote] = useState(data.quotes[randomPosition(data.quotes)])
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const handlerChangeQuote = () => {
+      setQuote(data.quotes[randomPosition(data.quotes)])
+    }
+
+    return (
+        <div className="App">
+            <header className="App-header">
+              <h3>{quote.quote}</h3>
+              <p>{quote.author}</p>
+              <button onClick={handlerChangeQuote} >Next Quote</button>
+            </header>
+        </div>
+    );
 }
 
 export default App;
