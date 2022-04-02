@@ -4,7 +4,7 @@ import data from "./Quotes.json";
 
 function App() {
     const randomPosition = (max) => {
-        return Math.floor(Math.random() * max.length - 1);
+        return Math.floor(Math.random() * max.length );
     };
 
     const backColors = [
